@@ -306,7 +306,7 @@
                                             </section>
                                             <section>
                                                 <div class="row">
-                                                    <label class="label col col-4" style="text-align: right">Materiales:</label>
+                                                    <label class="label col col-2" style="text-align: right">Materiales:</label>
                                                     <div class="col col-4">
                                                         <label class="select">
                                                             <select class="input" name="select_material" id="select_material">
@@ -317,7 +317,14 @@
                                                             </select>
                                                         </label>
                                                     </div>
+
                                                     <div class="col col-4">
+                                                        <label class="input">
+                                                            <input type="number" type="text" id="cantidad_select">
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="col col-2">
                                                         <label class="input">
                                                             <a href="javascript:agregar_material();" class="btn btn-primary btn-circle"><i class="fa fa-plus"></i></a>
                                                         </label>

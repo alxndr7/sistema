@@ -46,6 +46,7 @@ function agregar_material(){
     var id_mat = document.getElementById('select_material').value;
     var matSelect = document.getElementById("select_material");
     var selectedTextMat = matSelect.options[matSelect.selectedIndex].text;
+    var cantidad = document.getElementById('cantidad_select').value;
 
     var tabla = document.getElementById("tabla_materiales").getElementsByTagName('tbody')[0];
     var fila = document.createElement("tr");
@@ -63,7 +64,7 @@ function agregar_material(){
     col1.innerHTML = cont_decos++;
 
     col2.innerHTML = selectedTextMat;
-    col3.innerHTML = '<input type="number" name="txt_cantidad_'+id_mat+'" id="txt_cantidad_'+ id_mat +'"/>';
+    col3.innerHTML = '<input type="number" name="txt_cantidad_'+id_mat+'" id="txt_cantidad_'+ id_mat +'" value="' + cantidad +'"/>';
     col4.innerHTML = '<a class="btn btn-danger btn-xs" href="javascript:quitar_material('+id_mat +');">Eliminar</a>';
 
     fila.appendChild(col1);
