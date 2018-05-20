@@ -26,7 +26,7 @@ class TrabajadoresController extends Controller
     public function index()
     {
         //consulta a base de datos, para traer la lista de trabajadores
-        $trabajadores = DB::table('M_TRABAJADOR')->where('ESTADO_TRABAJADOR','1')->get();
+        $trabajadores = DB::table('m_trabajador')->where('estado_trabajador','1')->get();
 
         return view('Trabajadores.flistTrabajadores',compact('trabajadores'));
     }
@@ -35,9 +35,9 @@ class TrabajadoresController extends Controller
 
         DB::table('M_TRABAJADOR')->insert([
             [
-                'NOMBRE_TRABAJADOR'=> $request->nombre_trabajador,
-                'APELLIDO_TRABAJADOR'=>$request->apellido_trabajador,
-                'DNI_TRABAJADOR' => $request->dni_trabajador
+                'nombre_trabajador'=> $request->nombre_trabajador,
+                'apellido_trabajador'=>$request->apellido_trabajador,
+                'dni_trabajador' => $request->dni_trabajador
             ]
         ]);
 
@@ -47,17 +47,17 @@ class TrabajadoresController extends Controller
 
     public function get_trabajador_por_id(Request $request){
 
-        $trabajador = DB::table('M_TRABAJADOR')->where('ID_TRABAJADOR',$request->id_trabajador)->get();
+        $trabajador = DB::table('m_trabajador')->where('id_trabajador',$request->id_trabajador)->get();
         return $trabajador;
     }
 
     public function actualizar_trabajador(Request $request){
 
         //dd($request->all());
-        DB::table('M_TRABAJADOR')->where('ID_TRABAJADOR',$request->id_trabajador)->update([
-                'NOMBRE_TRABAJADOR'=> $request->nombre_trabajador_edit,
-                'APELLIDO_TRABAJADOR'=>$request->apellido_trabajador_edit,
-                'DNI_TRABAJADOR' => $request->dni_trabajador_edit
+        DB::table('m_trabajador')->where('id_trabajador',$request->id_trabajador)->update([
+                'nombre_trabajador'=> $request->nombre_trabajador_edit,
+                'apellido_trabajador'=>$request->apellido_trabajador_edit,
+                'dni_trabajador' => $request->dni_trabajador_edit
         ]);
 
         return redirect()->back();
@@ -65,8 +65,8 @@ class TrabajadoresController extends Controller
 
     public function actualizar_estado_trabajador(Request $request){
         //dd($request->all());
-        DB::table('M_TRABAJADOR')->where('ID_TRABAJADOR',$request->id_trabajador_eliminar)->update([
-            'ESTADO_TRABAJADOR'=> '0'
+        DB::table('m_trabajador')->where('id_trabajador',$request->id_trabajador_eliminar)->update([
+            'estado_trabajador'=> '0'
         ]);
 
         return redirect()->back();

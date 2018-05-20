@@ -38,136 +38,80 @@
         <!-- MAIN CONTENT -->
         <div id="content">
 
-            <!-- row -->
-            <div class="row">
-
-                <!-- col -->
-                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-                    <h1 class="page-title txt-color-blueDark">
-
-                        <!-- PAGE HEADER -->
-                        <i class="fa-fw fa fa-home"></i>
-                        Page Header
-                        <span>>
-								Subtitle
-							</span>
-                    </h1>
-                </div>
-                <!-- end col -->
-
-                <!-- right side of the page with the sparkline graphs -->
-                <!-- col -->
-                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-                    <!-- sparks -->
-                    <ul id="sparks">
-                        <li class="sparks-info">
-                            <h5> My Income <span class="txt-color-blue">$47,171</span></h5>
-                            <div class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm">
-                                1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
-                            </div>
+            <div class="show-stat-microcharts">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                    <div class="easy-pie-chart txt-color-orangeDark" data-percent="{{$deco_disp_porcen}}" data-pie-size="50">
+                        <span class="percent percent-sign">40</span>
+                    </div>
+                    <span class="easy-pie-title"> Decos <i class="fa fa-caret-up icon-color-bad"></i> </span>
+                    <ul class="smaller-stat hidden-sm pull-right">
+                        <li>
+                            <span class="label bg-color-greenLight"><i class="fa fa-caret-up"></i> 70%</span>
                         </li>
-                        <li class="sparks-info">
-                            <h5> Site Traffic <span class="txt-color-purple"><i class="fa fa-arrow-circle-up" data-rel="bootstrap-tooltip" title="Increased"></i>&nbsp;45%</span></h5>
-                            <div class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm">
-                                110,150,300,130,400,240,220,310,220,300, 270, 210
-                            </div>
-                        </li>
-                        <li class="sparks-info">
-                            <h5> Site Orders <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;2447</span></h5>
-                            <div class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm">
-                                110,150,300,130,400,240,220,310,220,300, 270, 210
-                            </div>
+                        <li>
+                            <span class="label bg-color-blueLight"><i class="fa fa-caret-down"></i> 20%</span>
                         </li>
                     </ul>
-                    <!-- end sparks -->
+                   {{-- <div class="sparkline txt-color-greenLight hidden-sm hidden-md pull-right" data-sparkline-type="line" data-sparkline-height="33px" data-sparkline-width="70px" data-fill-color="transparent">
+                        130, 187, 250, 257, 200, 210, 300, 270, 363, 247, 270, 363, 247
+                    </div>--}}
                 </div>
-                <!-- end col -->
 
-            </div>
-            <!-- end row -->
-
-            <!--
-                The ID "widget-grid" will start to initialize all widgets below
-                You do not need to use widgets if you dont want to. Simply remove
-                the <section></section> and you can use wells or panels instead
-                -->
-
-            <!-- widget grid -->
-            <section id="widget-grid" class="">
-
-                <!-- row -->
-                <div class="row">
-
-                    <!-- NEW WIDGET START -->
-                    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-                        <!-- Widget ID (each widget will need unique ID)-->
-                        <div class="jarviswidget" id="wid-id-0">
-                            <!-- widget options:
-                                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-
-                                data-widget-colorbutton="false"
-                                data-widget-editbutton="false"
-                                data-widget-togglebutton="false"
-                                data-widget-deletebutton="false"
-                                data-widget-fullscreenbutton="false"
-                                data-widget-custombutton="false"
-                                data-widget-collapsed="true"
-                                data-widget-sortable="false"
-
-                            -->
-                            <header>
-                                <span class="widget-icon"> <i class="fa fa-comments"></i> </span>
-                                <h2>Widget Title </h2>
-
-                            </header>
-
-                            <!-- widget div-->
-                            <div>
-
-                                <!-- widget edit box -->
-                                <div class="jarviswidget-editbox">
-                                    <!-- This area used as dropdown edit box -->
-                                    <input class="form-control" type="text">
-                                </div>
-                                <!-- end widget edit box -->
-
-                                <!-- widget content -->
-                                <div class="widget-body">
-
-                                    <!-- this is what the user will see -->
-
-                                </div>
-                                <!-- end widget content -->
-
+                @foreach($materiales as $material)
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="easy-pie-chart txt-color-greenLight" data-percent="{{$material->porcentaje}}" data-pie-size="50">
+                                <span class="percent percent-sign">78.9 </span>
                             </div>
-                            <!-- end widget div -->
-
+                            <span class="easy-pie-title"> {{$material->desc_material}}<i class="fa fa-caret-down icon-color-good"></i></span>
+                            <ul class="smaller-stat hidden-sm pull-right">
+                                <li>
+                                    <span class="label bg-color-blueDark"><i class="fa fa-caret-up"></i> 76%</span>
+                                </li>
+                                <li>
+                                    <span class="label bg-color-blue"><i class="fa fa-caret-down"></i> 3%</span>
+                                </li>
+                            </ul>
+                            <div class="sparkline txt-color-blue hidden-sm hidden-md pull-right" data-sparkline-type="line" data-sparkline-height="33px" data-sparkline-width="70px" data-fill-color="transparent">
+                                257, 200, 210, 300, 270, 363, 130, 187, 250, 247, 270, 363, 247
+                            </div>
                         </div>
-                        <!-- end widget -->
-
-                    </article>
-                    <!-- WIDGET END -->
-
-                </div>
-
-                <!-- end row -->
-
-                <!-- row -->
-
-                <div class="row">
-
-                    <!-- a blank row to get started -->
-                    <div class="col-sm-12">
-                        <!-- your contents here -->
+                @endforeach
+             {{--   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                    <div class="easy-pie-chart txt-color-blue" data-percent="23" data-pie-size="50">
+                        <span class="percent percent-sign">23 </span>
                     </div>
-
+                    <span class="easy-pie-title"> Transfered <i class="fa fa-caret-up icon-color-good"></i></span>
+                    <ul class="smaller-stat hidden-sm pull-right">
+                        <li>
+                            <span class="label bg-color-darken">10GB</span>
+                        </li>
+                        <li>
+                            <span class="label bg-color-blueDark"><i class="fa fa-caret-up"></i> 10%</span>
+                        </li>
+                    </ul>
+                    <div class="sparkline txt-color-darken hidden-sm hidden-md pull-right" data-sparkline-type="line" data-sparkline-height="33px" data-sparkline-width="70px" data-fill-color="transparent">
+                        200, 210, 363, 247, 300, 270, 130, 187, 250, 257, 363, 247, 270
+                    </div>
                 </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                    <div class="easy-pie-chart txt-color-darken" data-percent="36" data-pie-size="50">
+                        <span class="percent degree-sign">36 <i class="fa fa-caret-up"></i></span>
+                    </div>
+                    <span class="easy-pie-title"> Temperature <i class="fa fa-caret-down icon-color-good"></i></span>
+                    <ul class="smaller-stat hidden-sm pull-right">
+                        <li>
+                            <span class="label bg-color-red"><i class="fa fa-caret-up"></i> 124</span>
+                        </li>
+                        <li>
+                            <span class="label bg-color-blue"><i class="fa fa-caret-down"></i> 40 F</span>
+                        </li>
+                    </ul>
+                    <div class="sparkline txt-color-red hidden-sm hidden-md pull-right" data-sparkline-type="line" data-sparkline-height="33px" data-sparkline-width="70px" data-fill-color="transparent">
+                        2700, 3631, 2471, 2700, 3631, 2471, 1300, 1877, 2500, 2577, 2000, 2100, 3000
+                    </div>
+                </div>--}}
+            </div>
 
-                <!-- end row -->
-
-            </section>
-            <!-- end widget grid -->
 
         </div>
         <!-- END MAIN CONTENT -->

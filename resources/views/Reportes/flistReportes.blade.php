@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        tr.border_bottom td {
+            border-bottom:1pt solid black;
+        }
+
+    </style>
     <!-- MAIN PANEL -->
     <div id="main" role="main">
 
@@ -15,7 +21,7 @@
 
             <!-- breadcrumb -->
             <ol class="breadcrumb">
-                <li>Trabajadores</li><li>Mantenimiento de trabajadores</li>
+                <li>Reportes</li><li>Calculo de Comisiones</li>
             </ol>
             <!-- end breadcrumb -->
 
@@ -40,8 +46,25 @@
         <div id="content">
         <!-- NEW WIDGET START -->
             <article class="col-sm-12 col-md-6 col-lg-12">
-                <a data-toggle="modal" href="#myModal" class="btn btn-labeled btn-primary"> <span class="btn-label">
-                        <i class="glyphicon glyphicon-ok"></i></span>Nuevo Trabajador </a>
+                <div class="row">
+                    <label class="col-lg-2" style="text-align: right"> Fecha inicio:</label>  <input type="date" id="fecha_inicio">
+                </div>
+                <div class="row">
+                    <label class="col-lg-2" style="text-align: right"> Fecha Fin:</label>  <input type="date" id="fecha_fin">
+                </div>
+                <div class="row">
+                    <label class="col-lg-2" style="text-align: right"> </label>  <input class="btn btn-labeled btn-primary" type="button" id="generar" value="Generar" onclick="generar_comisiones();">
+                </div>
+
+
+
+
+
+
+
+
+      {{--          <a data-toggle="modal" href="#myModal" class="btn btn-labeled btn-primary"> <span class="btn-label">
+                        <i class="glyphicon glyphicon-ok"></i></span>Nuevo Material</a>--}}
                 <br><br>
                 <!-- Widget ID (each widget will need unique ID)-->
                 <div class="jarviswidget jarviswidget-color-blueLight" id="wid-id-2" data-widget-editbutton="false">
@@ -60,7 +83,7 @@
                     -->
                     <header>
                         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                        <h2>Tabla de Trabajadores </h2>
+                        <h2>Tabla de Comisiones </h2>
 
                     </header>
 
@@ -77,39 +100,7 @@
                         <!-- widget content -->
                         <div class="widget-body no-padding">
 
-                            <div class="table-responsive">
-
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th width="5%">#</th>
-                                        <th width="30%">Nombre</th>
-                                        <th width="30%">Apellido</th>
-                                        <th width="10%">DNI</th>
-                                        <th width="25%">Acciones</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($trabajadores as $trabajador)
-                                        <tr>
-                                            <td>{{$trabajador->ID_TRABAJADOR}}</td>
-                                            <td>{{$trabajador->NOMBRE_TRABAJADOR}}</td>
-                                            <td>{{$trabajador->APELLIDO_TRABAJADOR}}</td>
-                                            <td>{{$trabajador->DNI_TRABAJADOR}}</td>
-                                            <td>
-                                                <ul class="demo-btns">
-                                                    <li>
-                                                        <a href="javascript:editar_trabajador({{$trabajador->ID_TRABAJADOR}});" class="btn btn-labeled btn-warning"> <span class="btn-label"><i class="glyphicon glyphicon-edit"></i></span>Editar</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:eliminar_trabajador({{$trabajador->ID_TRABAJADOR}});" class="btn btn-labeled btn-danger"> <span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Eliminar</a>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                            <div class="table-responsive" id="tabla_ajax">
 
                             </div>
                         </div>
@@ -143,38 +134,27 @@
                     </div>
                     <div class="modal-body no-padding">
 
-                        <form  action="{{url('form_guardar_trabajador')}}" id="login-form" class="smart-form" method="POST">
+                        <form  action="{{url('form_guardar_ma')}}" id="login-form" class="smart-form" method="POST">
                             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                             <fieldset>
                                 <section>
                                     <div class="row">
-                                        <label class="label col col-2">Nombre(s)</label>
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
-                                                <input type="text" name="nombre_trabajador" id="nombre_trabajador">
+                                        <label class="label col col-2">Descripción:</label>
+                                        <div class="col col-4">
+                                            <label class="input">
+                                                <input type="text" name="desc_material" id="desc_material">
                                             </label>
                                         </div>
-                                    </div>
-                                </section>
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">Apellidos</label>
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
-                                                <input type="text" name="apellido_trabajador" id="apellido_trabajador">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
-
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">DNI</label>
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-credit-card"></i>
-                                                <input type="text" name="dni_trabajador" id="dni_trabajador">
-                                            </label>
+                                        <label class="label col col-2">Unidad:</label>
+                                        <div class="col col-4">
+                                                <label class="select">
+                                                    <select class="input" name="unidad_medida_material" id="unidad_medida_material">
+                                                        <option value="0">Escoge Unidad</option>
+                                                        <option value="Unidad">Unidad</option>
+                                                        <option value="Metros">Metros</option>
+                                                    </select>
+                                                </label>
                                         </div>
                                     </div>
                                 </section>
@@ -212,38 +192,56 @@
                     </div>
                     <div class="modal-body no-padding">
 
-                        <form  action="{{url('form_actualizar_trabajador')}}" id="login-form" class="smart-form" method="POST">
+                        <form  action="{{url('form_actualizar_comision')}}" id="login-form" class="smart-form" method="POST">
                             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                            <input type="hidden" name="id_trabajador" id="id_trabajador">
+                            <input type="hidden" name="id_comision" id="id_comision">
+                            <header>
+                                <h2>Instalación</h2>
+                            </header>
                             <fieldset>
+
                                 <section>
                                     <div class="row">
-                                        <label class="label col col-2">Nombre(s)</label>
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
-                                                <input type="text" name="nombre_trabajador_edit" id="nombre_trabajador_edit">
+                                        <label class="label col col-3">Deco Basico:</label>
+                                        <div class="col col-3">
+                                            <label class="input">
+                                                <input type="text" name="i_deco_basico" id="i_deco_basico">
+                                            </label>
+                                        </div>
+                                        <label class="label col col-3">Deco Adicional:</label>
+                                        <div class="col col-3">
+                                            <label class="input">
+                                                <input type="text" name="i_deco_adi" id="i_deco_adi">
                                             </label>
                                         </div>
                                     </div>
                                 </section>
 
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">Apellidos</label>
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-user"></i>
-                                                <input type="text" name="apellido_trabajador_edit" id="apellido_trabajador_edit">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </section>
+                            </fieldset>
+
+                            <header>
+                                <h2>Servicio</h2>
+                            </header>
+                            <fieldset>
 
                                 <section>
                                     <div class="row">
-                                        <label class="label col col-2">DNI</label>
-                                        <div class="col col-10">
-                                            <label class="input"> <i class="icon-append fa fa-credit-card"></i>
-                                                <input type="text" name="dni_trabajador_edit" id="dni_trabajador_edit">
+                                        <label class="label col col-2">Mudanza:</label>
+                                        <div class="col col-2">
+                                            <label class="input">
+                                                <input type="text" name="s_mudanza" id="s_mudanza">
+                                            </label>
+                                        </div>
+                                        <label class="label col col-2">Otros:</label>
+                                        <div class="col col-2">
+                                            <label class="input">
+                                                <input type="text" name="s_otros" id="s_otros">
+                                            </label>
+                                        </div>
+                                        <label class="label col col-2">Adicional:</label>
+                                        <div class="col col-2">
+                                            <label class="input">
+                                                <input type="text" name="s_deco_adi" id="s_deco_adi">
                                             </label>
                                         </div>
                                     </div>
@@ -282,20 +280,17 @@
                         </h4>
                     </div>
                     <div class="modal-body no-padding">
-
-                        <form  action="{{url('form_actualizar_estado')}}" id="login-form" class="smart-form" method="POST">
+                        <form  action="{{url('form_eliminar_material')}}" id="login-form" class="smart-form" method="POST">
                             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                            <input type="hidden" name="id_trabajador_eliminar" id="id_trabajador_eliminar">
+                            <input type="hidden" name="id_material_eliminar" id="id_material_eliminar">
                             <fieldset>
                                 <section>
                                     <div class="row">
                                         <label class="label col col-12">Esta seguro de eliminar el registro?</label>
-                                        <label class="label col col-12">Se eliminará a <strong id="nombre"></strong> de forma permanente.</label>
+                                        <label class="label col col-12">Se eliminará material <strong id="nombre"></strong> de forma permanente.</label>
                                     </div>
                                 </section>
-
                             </fieldset>
-
                             <footer>
                                 <button type="submit" class="btn btn-primary">
                                     Aceptar
@@ -306,10 +301,7 @@
 
                             </footer>
                         </form>
-
-
                     </div>
-
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
@@ -318,6 +310,8 @@
     <!-- END MAIN PANEL -->
 @endsection
 
+
 @section('page-js-script')
-    <script language="JavaScript" type="text/javascript" src="{{ asset('js/js_modules/trabajadores.js') }}"></script>
+
+    <script language="JavaScript" type="text/javascript" src="{{ asset('js/js_modules/reportes.js') }}"></script>
 @endsection

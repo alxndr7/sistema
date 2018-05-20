@@ -26,8 +26,16 @@ class HomeController extends Controller
     {
         //consulta a base de datos, para traer la lista de trabajadores
 
+        $decos = DB::select('SELECT 
+                  COUNT(a.id_deco) filter (where estado_deco = \'1\') as disponibles, 
+                  count(a.id_deco) filter (where estado_deco != \'0\') as total
+                  FROM m_decos a');
 
-        return view('home');
+        $materiales = DB::table('vw_porcentaje_materiales')->get();
+
+        $deco_disp_porcen = ($decos[0]->disponibles * 100)/$decos[0]->total;
+
+        return view('home',compact('deco_disp_porcen','materiales'));
     }
 
     public function funcion_home()

@@ -289,7 +289,10 @@ Use search to find needed section.
 
         <ul>
             <li>
-                <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Mantenimientos</span></a>
+                <a href="{{url('/home')}}" title="Principal"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Principal</span></a>
+            </li>
+            <li>
+                <a href="#" title="Mantenimientos"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Mantenimientos</span></a>
                 <ul>
                     <li>
                         <a href="{{url('/usuarios')}}" title="Crear, editar y eliminar usuarios"><span class="menu-item-parent">Usuarios</span></a>
@@ -297,14 +300,31 @@ Use search to find needed section.
                     <li>
                         <a href="{{url('/trabajadores')}}" title="Crear, editar y eliminar trabajadores"><span class="menu-item-parent">Trabajadores</span></a>
                     </li>
-                    <li class="">
-                        <a href="dashboard-social.html" title="Crear, editar y eliminar Decodificadores"><span class="menu-item-parent">Decodificadores</span></a>
-                    </li>
-                    <li class="">
-                        <a href="dashboard-social.html" title="Crear, editar y eliminar Materiales"><span class="menu-item-parent">Materiales</span></a>
-                    </li>
                 </ul>
             </li>
+
+            <li>
+                <a href="{{url('/decodificadores')}}" title="Decodificadores"><i class="fa fa-lg fa-fw fa-keyboard-o"></i> <span class="menu-item-parent">Decodificadores</span></a>
+            </li>
+            <li>
+                <a href="{{url('/materiales')}}" title="Materiales"><i class="fa fa-lg fa-fw fa-truck"></i> <span class="menu-item-parent">Materiales</span></a>
+            </li>
+            <li>
+                <a href="{{url('/almacen')}}" title="Almacen"><i class="fa fa-lg fa-fw  fa-building"></i> <span class="menu-item-parent">Almacen</span></a>
+            </li>
+            <li>
+                <a href="{{url('/control_diario')}}" title="Control"><i class="fa fa-lg fa-fw fa-exchange"></i> <span class="menu-item-parent">Control Diario</span></a>
+            </li>
+            <li>
+                <a href="{{url('/historial')}}" title="Historial"><i class="fa fa-lg fa-fw fa-history"></i> <span class="menu-item-parent">Historial Asignación</span></a>
+            </li>
+            <li>
+                <a href="{{url('/comision')}}" title="Comisiones"><i class="fa fa-lg fa-fw fa-money"></i> <span class="menu-item-parent">Comisiones</span></a>
+            </li>
+            <li>
+                <a href="{{url('/reportes')}}" title="Reportes"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Reportes</span></a>
+            </li>
+
         </ul>
     </nav>
 
@@ -403,8 +423,6 @@ you can add as many as you like
 
 <!--================================================== -->
 
-
-<script language="JavaScript" type="text/javascript" src="{{ asset('js/js_modules/trabajadores.js') }}"></script>
 
 
 <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
@@ -562,6 +580,10 @@ you can add as many as you like
     })();
 
 </script>
+
+
+@yield('page-js-script')
+
 
 </body>
 
