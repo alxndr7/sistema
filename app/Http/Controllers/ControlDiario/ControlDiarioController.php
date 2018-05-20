@@ -90,7 +90,8 @@ class ControlDiarioController extends Controller
             'ibs' => $request->ibs,
             'orden_trabajo' =>$request->orden_trabajo,
             'detalle_servicio' => $request->select_tipo_serv,
-            'fecha_asignacion' => DB::raw('now()')
+            'fecha_asignacion' => DB::raw('now()'),
+            'estado' => '1'
 
         ]);
 
