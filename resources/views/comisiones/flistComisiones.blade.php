@@ -44,6 +44,13 @@
 
         <!-- MAIN CONTENT -->
         <div id="content">
+
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+                <!-- row -->
+                <div class="row">
+
         <!-- NEW WIDGET START -->
             <article class="col-sm-12 col-md-6 col-lg-12">
       {{--          <a data-toggle="modal" href="#myModal" class="btn btn-labeled btn-primary"> <span class="btn-label">
@@ -139,7 +146,8 @@
 
             </article>
             <!-- WIDGET END -->
-
+                </div>
+            </section>
 
         </div>
         <!-- END MAIN CONTENT -->

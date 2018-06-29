@@ -39,6 +39,12 @@
         <!-- MAIN CONTENT -->
         <div id="content">
         <!-- NEW WIDGET START -->
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+                <!-- row -->
+                <div class="row">
+
             <article class="col-sm-12 col-md-6 col-lg-12">
                 <a data-toggle="modal" href="#myModal" class="btn btn-labeled btn-primary"> <span class="btn-label">
                         <i class="glyphicon glyphicon-ok"></i></span>Nuevo I/O</a>
@@ -93,8 +99,14 @@
                                     @foreach($listIo as $io)
                                         <tr>
                                             <td>{{$io->id_log_io}}</td>
-                                            <td>{{$io->id_material}}</td>
-                                            <td>{{$io->tipo_io}}</td>
+                                            <td>{{$io->desc_material}}</td>
+                                            <td>
+                                                @if($io->tipo_io == 'I')
+                                                    Entrada
+                                                @else
+                                                    Salida
+                                                @endif
+                                            </td>
                                             <td>{{$io->cantidad}}</td>
                                             <td>{{$io->desc_io}}</td>
                                         </tr>
@@ -115,7 +127,9 @@
             </article>
             <!-- WIDGET END -->
 
+                </div>
 
+            </section>
         </div>
         <!-- END MAIN CONTENT -->
        {{-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
@@ -137,52 +151,47 @@
                         <form  action="{{url('form_guardar_io')}}" id="login-form" class="smart-form" method="POST">
                             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                             <fieldset>
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">Descripción:</label>
-                                        <div class="col col-10">
+                                <section class="col col-2">
+                                        <label class="label">Descripción:</label>
+                                </section>
+                                <section class="col col-10">
                                             <label class="input">
                                                 <input type="text" name="desc_io" id="desc_io">
                                             </label>
-                                        </div>
-
-                                    </div>
                                 </section>
-                                <section>
-                                    <div class="row">
-                                        <label class="label col col-2">Material:</label>
-                                        <div class="col col-3">
+                                <section class="col col-2">
+                                        <label class="label">Material:</label>
+                                </section>
+                                <section class="col col-3">
                                             <label class="select">
-                                                <select class="input" name="id_material" id="id_material">
+                                                <select name="id_material" id="id_material">
                                                     <option value="0">Escoge Material</option>
                                                     @foreach($listMateriales as $material)
                                                         <option value="{{$material->id_material}}">{{$material->desc_material}}</option>
                                                     @endforeach
-                                                </select>
+                                                </select><i></i>
                                             </label>
-                                        </div>
-                                        <label class="label col col-1">Tipo:</label>
-                                        <div class="col col-3">
+                                </section>
+                                <section class="col col-1">
+                                        <label class="label">Tipo:</label>
+                                </section>
+                                <section class="col col-3">
                                             <label class="select">
-                                                <select class="input" name="tipo_io" id="tipo_io">
+                                                <select name="tipo_io" id="tipo_io">
                                                     <option value="0">Escoge Tipo</option>
                                                         <option value="I">Entrada</option>
                                                         <option value="O">Salida</option>
-                                                </select>
+                                                </select><i></i>
                                             </label>
-                                        </div>
-                                        <label class="label col col-1">Cant:</label>
-                                        <div class="col col-2">
+                                </section>
+                                <section class="col col-1">
+                                        <label class="label">Cant:</label>
+                                </section>
+                                <section class="col col-2">
                                                 <label class="input">
                                                     <input type="text" name="cantidad" id="cantidad">
                                                 </label>
-                                        </div>
-
-                                    </div>
-
                                 </section>
-
-
 
                             </fieldset>
 

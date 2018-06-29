@@ -39,6 +39,12 @@
         <!-- MAIN CONTENT -->
         <div id="content">
         <!-- NEW WIDGET START -->
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+                <!-- row -->
+                <div class="row">
+
             <article class="col-sm-12 col-md-6 col-lg-12">
               {{--  <a data-toggle="modal" href="#myModal" class="btn btn-labeled btn-primary"> <span class="btn-label">
                         <i class="glyphicon glyphicon-ok"></i></span>Nueva Asignación</a>--}}
@@ -86,6 +92,7 @@
                                         <th width="25%">Trabajador</th>
                                         <th width="15%">Orden De Trabajo</th>
                                         <th width="10%">IBS</th>
+                                        <th width="10%">Fecha</th>
                                         <th width="15%">Tipo Servicio</th>
                                         <th width="10%">Decos</th>
                                         <th width="10%">Materiales</th>
@@ -98,6 +105,7 @@
                                             <td>{{$det->nombre_trabajador}} {{$det->apellido_trabajador}}</td>
                                             <td>{{$det->orden_trabajo}}</td>
                                             <td>{{$det->ibs}}</td>
+                                            <td>{{$det->fecha_asignacion}}</td>
                                             <td>{{$det->tipo_servicio}}</td>
                                             <td>
                                                 <a href="javascript:ver_modal_decos({{$det->id_asignacion}});" class="btn btn-labeled btn-primary"> <span class="btn-label"><i class="fa fa-keyboard-o"></i></span>Ver</a>
@@ -122,7 +130,8 @@
 
             </article>
             <!-- WIDGET END -->
-
+                </div>
+            </section>
 
         </div>
         <!-- END MAIN CONTENT -->

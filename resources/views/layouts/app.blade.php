@@ -444,7 +444,7 @@ you can add as many as you like
 </script>
 
 <!-- IMPORTANT: APP CONFIG -->
-<script src="{{asset('app.config.js')}}"></script>
+<script src="{{asset('js/app.config.js')}}"></script>
 
 <!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
 <script src="{{asset('js/plugin/jquery-touch/jquery.ui.touch-punch.min.js')}}"></script>
@@ -488,19 +488,18 @@ you can add as many as you like
 
 <![endif]-->
 
-<!-- Demo purpose only -->
-<script src="{{asset('js/demo.min.js')}}"></script>
 
 <!-- MAIN APP JS FILE -->
-<script src="js/app.min.js"></script>
+<script src="{{asset('js/app.min.js')}}"></script>
 
 <!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
 <!-- Voice command : plugin -->
-<script src="js/speech/voicecommand.min.js"></script>
+<script src="{{asset('js/speech/voicecommand.min.js')}}"></script>
 
 <!-- SmartChat UI : plugin -->
-<script src="js/smart-chat-ui/smart.chat.ui.min.js"></script>
-<script src="js/smart-chat-ui/smart.chat.manager.min.js"></script>
+<script src="{{asset('js/smart-chat-ui/smart.chat.ui.min.js')}}"></script>
+<script src="{{asset('js/smart-chat-ui/smart.chat.manager.min.js')}}"></script>
+
 
 <!-- PAGE RELATED PLUGIN(S)
 <script src="..."></script>-->

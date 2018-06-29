@@ -38,6 +38,12 @@
 
         <!-- MAIN CONTENT -->
         <div id="content">
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+                <!-- row -->
+                <div class="row">
+
         <!-- NEW WIDGET START -->
             <article class="col-sm-12 col-md-6 col-lg-12">
                 <a data-toggle="modal" href="#myModal" class="btn btn-labeled btn-primary"> <span class="btn-label">
@@ -95,7 +101,11 @@
                                             <td>{{$deco->id_deco}}</td>
                                             <td>{{$deco->smart_card}}</td>
                                             <td>{{$deco->serie}}</td>
-                                            <td>{{$deco->estado_deco}}</td>
+                                            <td>
+                                                @if($deco->estado_deco == '1')
+                                                    No asignado
+                                                @endif
+                                            </td>
                                             <td>
                                                 <ul class="demo-btns">
                                                     <li>
@@ -124,7 +134,8 @@
             </article>
             <!-- WIDGET END -->
 
-
+                </div>
+            </section>
         </div>
         <!-- END MAIN CONTENT -->
        {{-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">

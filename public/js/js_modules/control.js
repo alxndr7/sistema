@@ -195,3 +195,15 @@ function ver_deco(e){
 
     }
 }
+
+function validar_serv_inst(tipo){
+    //alert(tipo);
+    if(tipo == 'Instalacion'){
+        $('#select_tipo_serv').val('');
+        $('#select_tipo_serv').attr('disabled', 'disabled');
+    }
+    if(tipo == 'Servicio'){
+        $('#select_tipo_serv').removeAttr('disabled');
+    }
+
+}

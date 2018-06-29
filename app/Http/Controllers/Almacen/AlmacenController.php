@@ -26,7 +26,9 @@ class AlmacenController extends Controller
     public function index()
     {
         //consulta a base de datos, para traer la lista de trabajadores
-        $listIo = DB::table('log_entradas_salidas')->take(100)->get();
+        //$listIo = DB::table('log_entradas_salidas')->take(100)->get();
+        $listIo = DB::select('select t1.*, t2.desc_material from log_entradas_salidas t1
+                  join m_materiales t2 on t1.id_material = t2.id_material');
         $listMateriales = DB::table('m_materiales')->where('estado_material','1')->orderby('id_material','asc')->get();
 
         return view('Almacen.flistAlmacen',compact('listIo','listMateriales'));

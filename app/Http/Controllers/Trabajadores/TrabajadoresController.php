@@ -32,12 +32,14 @@ class TrabajadoresController extends Controller
     }
 
     public function guardar_trabajador(Request $request){
+        dd($request->all());
 
-        DB::table('M_TRABAJADOR')->insert([
+        DB::table('m_trabajador')->insert([
             [
                 'nombre_trabajador'=> $request->nombre_trabajador,
                 'apellido_trabajador'=>$request->apellido_trabajador,
-                'dni_trabajador' => $request->dni_trabajador
+                'dni_trabajador' => $request->dni_trabajador,
+                'estado_trabajador' => '1'
             ]
         ]);
 

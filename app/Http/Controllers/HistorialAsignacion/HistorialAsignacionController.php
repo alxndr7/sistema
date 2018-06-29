@@ -30,7 +30,7 @@ class HistorialAsignacionController extends Controller
         $trabajadores = DB::table('m_trabajador')->where('estado_trabajador','1')->get();
         $materiales = DB::table('m_materiales')->where('estado_material','1')->get();
         $detalle = DB::select('select dia.*,trab.* from log_asignacion_diaria dia
-                                join m_trabajador trab on trab.id_trabajador = dia.id_trabajador where dia.estado = \'2\'');
+                                join m_trabajador trab on trab.id_trabajador = dia.id_trabajador where dia.estado = \'2\' order by fecha_asignacion desc');
         return view('Historial.flistHistorial',compact('trabajadores','decos','materiales','detalle'));
     }
 

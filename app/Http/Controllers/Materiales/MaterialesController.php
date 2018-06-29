@@ -26,8 +26,11 @@ class MaterialesController extends Controller
     public function index()
     {
         //consulta a base de datos, para traer la lista de trabajadores
-        $materiales = DB::table('m_materiales')->where('estado_material','1')->orderby('id_material','asc')->get();
-
+        //$materiales = DB::table('m_materiales')->where('estado_material','1')->orderby('id_material','asc')->get();
+        $materiales = DB::select('select m.*, s.total_material from m_materiales m
+                                    join t_stock_materiales s on m.id_material = s.id_material 
+                                    where m.estado_material = \'1\' 
+                                    Order By m.id_material asc');
         return view('Materiales.flistMateriales',compact('materiales'));
     }
 

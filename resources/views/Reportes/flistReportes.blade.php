@@ -44,6 +44,12 @@
 
         <!-- MAIN CONTENT -->
         <div id="content">
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+                <!-- row -->
+                <div class="row">
+
         <!-- NEW WIDGET START -->
             <article class="col-sm-12 col-md-6 col-lg-12">
                 <div class="row">
@@ -115,7 +121,8 @@
             </article>
             <!-- WIDGET END -->
 
-
+                </div>
+            </section>
         </div>
         <!-- END MAIN CONTENT -->
        {{-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
