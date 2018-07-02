@@ -175,25 +175,9 @@ Use search to find needed section.
         <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
             <li class="">
                 <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
-                    <img src="img/avatars/sunny.png" alt="John Doe" class="online" />
+                    <img src="img/avatars/male.png" alt="John Doe" class="online" />
                 </a>
                 <ul class="dropdown-menu pull-right">
-                    <li>
-                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="profile.html" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
-                    </li>
-                    <li class="divider"></li>
                     <li>
                         <form id="logout_form" method="POST" action="{{route('logout')}}">
                             {{csrf_field()}}
@@ -219,7 +203,7 @@ Use search to find needed section.
         <!-- #SEARCH -->
         <!-- input: search field -->
         <form action="search.html" class="header-search pull-right">
-            <input id="search-fld" type="text" name="param" placeholder="Find reports and more">
+            <input id="search-fld" type="text" name="param" placeholder="Buscar">
             <button type="submit">
                 <i class="fa fa-search"></i>
             </button>
@@ -233,25 +217,6 @@ Use search to find needed section.
         </div>
         <!-- end fullscreen button -->
 
-        <!-- #Voice Command: Start Speech -->
-        <div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
-            <div>
-                <a href="javascript:void(0)" title="Voice Command" data-action="voiceCommand"><i class="fa fa-microphone"></i></a>
-                <div class="popover bottom"><div class="arrow"></div>
-                    <div class="popover-content">
-                        <h4 class="vc-title">Voice command activated <br><small>Please speak clearly into the mic</small></h4>
-                        <h4 class="vc-title-error text-center">
-                            <i class="fa fa-microphone-slash"></i> Voice command failed
-                            <br><small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
-                            <br><small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
-                        </h4>
-                        <a href="javascript:void(0);" class="btn btn-success" onclick="commands.help()">See Commands</a>
-                        <a href="javascript:void(0);" class="btn bg-color-purple txt-color-white" onclick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end voice command -->
 
     </div>
     <!-- end pulled right: nav area -->

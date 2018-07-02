@@ -46,7 +46,7 @@
 
                     <!-- NEW WIDGET START -->
                     <article class="col-sm-12 col-md-6 col-lg-12">
-                        <a data-toggle="modal" href="#myModal" class="btn btn-labeled btn-primary" onclick="add_validation()"> <span class="btn-label">
+                        <a data-toggle="modal" href="#myModal" class="btn btn-labeled btn-primary"> <span class="btn-label">
                         <i class="glyphicon glyphicon-ok"></i></span>Nueva Asignación</a>
                         <br><br>
                         <!-- Widget ID (each widget will need unique ID)-->
@@ -345,7 +345,7 @@
                                                         </label>
                                                     </div>
                                                 </section>
-                                              {{--  <section>
+                                                <section>
                                                     <div class="row">
                                                         <label class="label col col-2" style="text-align: right">Materiales:</label>
                                                         <div class="col col-4">
@@ -367,11 +367,11 @@
 
                                                         <div class="col col-2">
                                                             <label class="input">
-                                                                <a href="javascript:add_validation();" class="btn btn-primary btn-circle"><i class="fa fa-plus"></i></a>
+                                                                <a href="javascript:agregar_material();" class="btn btn-primary btn-circle"><i class="fa fa-plus"></i></a>
                                                             </label>
                                                         </div>
                                                     </div>
-                                                </section>--}}
+                                                </section>
                                                 <section>
                                                     <div class="row" style="margin-left: 0px;margin-right: 0px;">
                                                         <div class="table-responsive">
@@ -382,20 +382,10 @@
                                                                     <th width="10%" style="text-align: center">#</th>
                                                                     <th width="50%" style="text-align: left">Material</th>
                                                                     <th width="20%" style="text-align: center">Cantidad</th>
-                                                                    <th width="20%" style="text-align: center">Stock</th>
+                                                                    <th width="20%" style="text-align: center">Acción</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                @foreach($materiales as $material)
-                                                                    <tr>
-                                                                        <td>{{$material->id_material}}</td>
-                                                                        <td>{{$material->desc_material}}</td>
-                                                                        <td>
-                                                                            <input type="number" name="txt_cantidad_{{$material->id_material}}" id="txt_cantidad_{{$material->id_material}}" value="0"/>
-                                                                        </td>
-                                                                        <td>{{$material->total_material}}</td>
-                                                                    </tr>
-                                                                @endforeach
                                                                 </tbody>
                                                             </table>
 

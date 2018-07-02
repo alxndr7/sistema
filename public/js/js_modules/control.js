@@ -207,3 +207,43 @@ function validar_serv_inst(tipo){
     }
 
 }
+
+function add_validation(){
+ /*   $("#txt_cantidad_2").rules('add', {
+        required: true,
+        min:0,
+        messages: {
+            required: "Enter something else",
+            min:"Prueba"
+        }
+    });*/
+
+    $.ajax({
+        url: 'get_stock_materiales',
+        type: 'GET',
+        success: function (data) {
+            //alert(data);
+            for(var i=0; i<data.length;i++){
+                console.log('id=' + data[i].id_material);
+                $("#txt_cantidad_"+ data[i].id_material).rules('add', {
+                    required: true,
+                    min:0,
+                    max: data[i].total_material,
+                    messages: {
+                        required: "Enter something else",
+                        min:"No se permiten negativos",
+                        max: "Máximo permitido " + data[i].total_material
+                    }
+                });
+            }
+        },
+        error: function (data) {
+
+        }
+    });
+
+  /*  $("#nueva_asignacion").validate(); //sets up the validator
+    $("#txt_cantidad_1").rules("add", "required");
+    $("#txt_cantidad_1").rules("add", "min");
+    $("#txt_cantidad_1").rules("add", "required");*/
+}

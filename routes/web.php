@@ -61,6 +61,7 @@ Route::get('/get_modal_materiales','ControlDiario\ControlDiarioController@get_mo
 Route::get('/get_modal_validar','ControlDiario\ControlDiarioController@get_modal_validar');
 Route::post('/form_validar_asignacion','ControlDiario\ControlDiarioController@form_validar_asignacion');
 Route::get('/get_deco_x_serie','ControlDiario\ControlDiarioController@get_deco_x_serie');
+Route::get('/get_stock_materiales','ControlDiario\ControlDiarioController@get_stock_materiales');
 
 /* --------- ROUTES COMISIONES-------- */
 Route::get('/comision','Comisiones\ComisionesController@index');
