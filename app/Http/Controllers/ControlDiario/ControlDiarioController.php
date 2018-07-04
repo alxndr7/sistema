@@ -89,8 +89,11 @@ class ControlDiarioController extends Controller
         $decos= explode(',', $request->ids_dcos);
         $materiales= explode(',', $request->ids_mate);
 
+       /* $id = DB::table('users')->insertGetId(
+            ['email' => 'john@example.com', 'votes' => 0]
+        );*/
 
-        DB::table('log_asignacion_diaria')->insert([
+        $id = DB::table('log_asignacion_diaria')->insertGetId([
             'id_trabajador' => $request->select_trabajador,
             'tipo_servicio' => $request->select_tipo,
             'ibs' => $request->ibs,
@@ -99,10 +102,10 @@ class ControlDiarioController extends Controller
             'fecha_asignacion' => DB::raw('now()'),
             'estado' => '1'
 
-        ]);
+        ], 'id_asignacion');
 
-        $id = DB::getPdo()->lastInsertId();
-
+        /*//$id = DB::getPdo()->lastInsertId();
+        $id = $insert->lastInsertId();*/
 
         if( $decos[0] != ''){
             for($i = 0 ; $i < count($decos); $i++){
