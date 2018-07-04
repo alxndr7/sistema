@@ -819,12 +819,12 @@
     <script src="{{ asset('js/plugin/fuelux/wizard/wizard.min.js')}}"></script>
     <script>
         $(document).ready(function() {
-            $(window).keydown(function(event){
+          /*  $(window).keydown(function(event){
                 if(event.keyCode == 13) {
                     event.preventDefault();
                     return false;
                 }
-            });
+            });*/
 
 
             var $validator = $("#nueva_asignacion").validate({

@@ -155,6 +155,7 @@ function validar_decos(e,id){
 
 
 function ver_deco(e){
+    //alert(e.keyCode);
     if (e.keyCode == 13) {
 
         $.ajax({
@@ -186,6 +187,7 @@ function ver_deco(e){
 
                 array_decos.push(data[0]['id_deco']);
                 document.getElementById('ids_dcos').value = array_decos;
+                $('#input_deco').val('');
 
             },
             error: function (data) {
@@ -217,7 +219,7 @@ function add_validation(){
             min:"Prueba"
         }
     });*/
-
+    array_materiales = [];
     $.ajax({
         url: 'get_stock_materiales',
         type: 'GET',
@@ -225,6 +227,8 @@ function add_validation(){
             //alert(data);
             for(var i=0; i<data.length;i++){
                 console.log('id=' + data[i].id_material);
+                array_materiales.push(data[i].id_material);
+
                 $("#txt_cantidad_"+ data[i].id_material).rules('add', {
                     required: true,
                     min:0,
@@ -236,6 +240,7 @@ function add_validation(){
                     }
                 });
             }
+            document.getElementById('ids_mate').value = array_materiales;
         },
         error: function (data) {
 

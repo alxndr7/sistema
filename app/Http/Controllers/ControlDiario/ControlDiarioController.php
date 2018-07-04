@@ -85,6 +85,7 @@ class ControlDiarioController extends Controller
     public function form_guardar_asignacion(Request $request){
 
         //dd($request->get('txt_cantidad_1'));
+        //dd($request->all());
         $decos= explode(',', $request->ids_dcos);
         $materiales= explode(',', $request->ids_mate);
 
