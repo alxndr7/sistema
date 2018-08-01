@@ -40,6 +40,7 @@ Route::post('/form_guardar_deco','Decos\DecosController@guardar_deco');
 Route::get('/get_deco_por_id','Decos\DecosController@deco_por_id');
 Route::post('/form_actualizar_deco','Decos\DecosController@actualizar_deco');
 Route::post('/form_eliminar_deco','Decos\DecosController@eliminar_deco');
+Route::post('/form_deco_malogrado','Decos\DecosController@deco_malogrado');
 
 /* --------- ROUTES MATERIALES-------- */
 Route::get('/materiales','Materiales\MaterialesController@index');
@@ -71,6 +72,10 @@ Route::post('/form_actualizar_comision','Comisiones\ComisionesController@form_ac
 /* --------- ROUTES REPORTES-------- */
 Route::get('/reportes','Reportes\ReportesController@index');
 Route::get('/get_comision_por_fecha','Reportes\ReportesController@get_comision_por_fecha');
+Route::get('/reporte_decodificadores','Reportes\ReportesController@index_reporte_decos');
+Route::get('/generar_reporte_decos','Reportes\ReportesController@generar_reporte_decos');
+Route::get('/reporte_detallado','Reportes\ReportesController@index_det_asig_trab');
+Route::get('/get_reporte_detallado','Reportes\ReportesController@get_det_asig_trabajdor');
 
 
 /* --------- ROUTES HISTORIAL-------- */

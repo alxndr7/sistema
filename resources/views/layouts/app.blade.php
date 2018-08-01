@@ -287,7 +287,19 @@ Use search to find needed section.
                 <a href="{{url('/comision')}}" title="Comisiones"><i class="fa fa-lg fa-fw fa-money"></i> <span class="menu-item-parent">Comisiones</span></a>
             </li>
             <li>
-                <a href="{{url('/reportes')}}" title="Reportes"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Reportes</span></a>
+                <a href="#" title="Mantenimientos"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Reportes</span></a>
+                <ul>
+                    <li>
+                        <a href="{{url('/reportes')}}" title="Reporte de Comisiones"><span class="menu-item-parent">Comisiones</span></a>
+                    </li>
+                    <li>
+                        <a href="{{url('/reporte_decodificadores')}}" title="Reporte de Decodificadores"><span class="menu-item-parent">Decodificadores</span></a>
+                    </li>
+                    <li>
+                        <a href="{{url('/reporte_detallado')}}" title="Materiales y Decos Por Trabajador"><span class="menu-item-parent">Materiales y Decos Por Trabajador</span></a>
+                    </li>
+                </ul>
+               {{-- <a href="{{url('/')}}" title="Reportes"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Reportes</span></a>--}}
             </li>
 
         </ul>

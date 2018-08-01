@@ -36,11 +36,26 @@ class MaterialesController extends Controller
 
     public function guarda_material(Request $request){
 
-        DB::table('m_materiales')->insert([
+        $id = DB::table('m_materiales')->insertGetId([
+            'desc_material'=> $request->desc_material,
+            'unidad_medida_material'=>$request->unidad_medida_material,
+            'estado_material' => '1'
+
+        ], 'id_material');
+
+   /*     DB::table('m_materiales')->insert([
             [
                 'desc_material'=> $request->desc_material,
                 'unidad_medida_material'=>$request->unidad_medida_material,
                 'estado_material' => '1'
+            ]
+        ]);*/
+
+        DB::table('t_stock_materiales')->insert([
+            [
+                'id_material'=> $id,
+                'total_material'=> 0,
+                'id_stock'=> $id,
             ]
         ]);
 

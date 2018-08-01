@@ -71,4 +71,14 @@ class DecosController extends Controller
         return redirect()->back();
     }
 
+    public function deco_malogrado(Request $request){
+        //dd($request->all());
+        DB::table('m_decos')->where('id_deco',$request->id_deco_malogrado)->update([
+            'estado_deco'=> '3'
+        ]);
+
+        return redirect()->back();
+    }
+
+
 }

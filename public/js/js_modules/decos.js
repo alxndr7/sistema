@@ -39,3 +39,24 @@ function eliminar_deco(id){
     });
 
 }
+
+function deco_malogrado(id){
+
+    $.ajax({
+        url: 'get_deco_por_id',
+        type: 'GET',
+        data: {
+            id_deco: id
+        },
+        success: function (data) {
+            document.getElementById("id_deco_malogrado").value = id;
+            document.getElementById("nombre_2").innerHTML = data[0].serie
+            $('#myModalMalogrado').modal('show');
+
+        },
+        error: function (data) {
+
+        }
+    });
+
+}

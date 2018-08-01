@@ -52,4 +52,27 @@ class ReportesController extends Controller
         return redirect()->back();
     }
 
+    public function index_reporte_decos(){
+        return view('Reportes.flistRepDecodificadores');
+    }
+
+    public function generar_reporte_decos(Request $request){
+        $decos = DB::table('m_decos')->where('estado_deco',$request->estado_deco)->get();
+        //return response()->json($decos);
+        return view('Reportes.fpartReportes.ajax_tabla_decos',compact('decos'));
+    }
+
+    public function index_det_asig_trab(){
+        return view('Reportes.flistReporteDetalleAsig');
+    }
+
+    public function get_det_asig_trabajdor(Request $request){
+
+        //dd($request->fecha_inicio);->where('edad', '<', 20)
+        $detalle = DB::table('vw_det_asig_trabajador')
+            ->where('fecha_asignacion','>=',$request->fecha_inicio)
+            ->where('fecha_asignacion','<=',$request->fecha_fin)->get();
+        return view('Reportes.fpartReportes.ajax_tabla_det_asig_trab',compact('detalle'));
+    }
+
 }

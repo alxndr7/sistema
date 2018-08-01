@@ -104,8 +104,8 @@
                                         <th width="5%">#</th>
                                         <th width="15%">Deco Básico</th>
                                         <th width="15%">Deco Adicional</th>
-                                        <th width="15%">Mudanza</th>
-                                        <th width="15%">Otros</th>
+                                        <th width="15%">Cambio de Lugar</th>
+                                        <th width="15%">Servicios</th>
                                         <th width="15%">Deco Adicional</th>
                                         <th width="20%">Acciones</th>
                                     </tr>

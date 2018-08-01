@@ -18,6 +18,39 @@ function generar_comisiones(id){
     });
 }
 
+function generar_reporte_decos(){
+    $.ajax({
+        url: 'generar_reporte_decos',
+        type: 'GET',
+        data: {
+            estado_deco:  document.getElementById("select_estado_deco").value
+        },
+        success: function (data) {
+            //alert("retorne del controlador "  + data[0].NOMBRE_TRABAJADOR);
+            $('#tabla_ajax').html(data);
+        },
+        error: function (data) {
+        }
+    });
+}
+
+function generar_reporte_detallado(){
+    $.ajax({
+        url: 'get_reporte_detallado',
+        type: 'GET',
+        data: {
+            fecha_inicio:  document.getElementById("fecha_inicio").value,
+            fecha_fin:  document.getElementById("fecha_fin").value
+        },
+        success: function (data) {
+            //alert("retorne del controlador "  + data[0].NOMBRE_TRABAJADOR);
+            $('#tabla_ajax').html(data);
+        },
+        error: function (data) {
+        }
+    });
+}
+
 function eliminar_material(id){
 
     $.ajax({
